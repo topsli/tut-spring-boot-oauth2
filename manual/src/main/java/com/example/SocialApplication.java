@@ -80,26 +80,26 @@ public class SocialApplication extends WebSecurityConfigurerAdapter {
 
 	private Filter ssoFilter() {
 		OAuth2ClientAuthenticationProcessingFilter facebookFilter = new OAuth2ClientAuthenticationProcessingFilter(
-				"/login/facebook");
-		OAuth2RestTemplate facebookTemplate = new OAuth2RestTemplate(facebook(), oauth2ClientContext);
+				"/login/itsnow");
+		OAuth2RestTemplate facebookTemplate = new OAuth2RestTemplate(itsnow(), oauth2ClientContext);
 		facebookFilter.setRestTemplate(facebookTemplate);
-		UserInfoTokenServices tokenServices = new UserInfoTokenServices(facebookResource().getUserInfoUri(),
-				facebook().getClientId());
+		UserInfoTokenServices tokenServices = new UserInfoTokenServices(itsnowResource().getUserInfoUri(),
+				itsnow().getClientId());
 		tokenServices.setRestTemplate(facebookTemplate);
 		facebookFilter.setTokenServices(
-				new UserInfoTokenServices(facebookResource().getUserInfoUri(), facebook().getClientId()));
+				new UserInfoTokenServices(itsnowResource().getUserInfoUri(), itsnow().getClientId()));
 		return facebookFilter;
 	}
 
 	@Bean
-	@ConfigurationProperties("facebook.client")
-	public AuthorizationCodeResourceDetails facebook() {
+	@ConfigurationProperties("itsnow.client")
+	public AuthorizationCodeResourceDetails itsnow() {
 		return new AuthorizationCodeResourceDetails();
 	}
 
 	@Bean
-	@ConfigurationProperties("facebook.resource")
-	public ResourceServerProperties facebookResource() {
+	@ConfigurationProperties("itsnow.resource")
+	public ResourceServerProperties itsnowResource() {
 		return new ResourceServerProperties();
 	}
 

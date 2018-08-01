@@ -1,14 +1,12 @@
-facebook:
+itsnow:
   client:
-    clientId: 233668646673605
-    clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
-    accessTokenUri: https://graph.facebook.com/oauth/access_token
-    userAuthorizationUri: https://www.facebook.com/dialog/oauth
-    tokenName: oauth_token
-    authenticationScheme: query
-    clientAuthenticationScheme: form
+    clientId: test
+    clientSecret: test
+    accessTokenUri: http://localhost:18001/auth/oauth/token
+    userAuthorizationUri: http://localhost:18001/auth/oauth/authorize
+
   resource:
-    userInfoUri: https://graph.facebook.com/me
+    userInfoUri: http://localhost:18002/user/name/test
 
 logging:
   level:
